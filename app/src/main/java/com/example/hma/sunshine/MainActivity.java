@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,8 +68,9 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             String[] forecastArray={"Today - Sunny - 88/63","Tomorrow - Foggy - 70/46","Weds - Cloudy - 72/63","Thurs - Rainy - 64/51","Friday - Foggy - 70/63","Saturday - Sunny - 88/63"};
             List<String> weekForcast=new ArrayList<String>(Arrays.asList(forecastArray));
-            ArrayAdapter<String> MyAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview,weekForcast);
-
+            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview,weekForcast);
+            ListView list= (ListView) rootView.findViewById(R.id.listview_forecast);
+            list.setAdapter(myAdapter);
             return rootView;
         }
     }
